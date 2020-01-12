@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EZ Cheese</title>
+
+    <script defer src="/__/firebase/7.6.2/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/7.6.2/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.6.2/firebase-firestore.js"></script>
+
+    <script defer src="./App/appPage.js" ></script>
+
+    <link rel="stylesheet" href="./CSS/styles.css"> 
+    </script>
+  </head>
+  <body>
+   
+        <button id="btnLogout" class="btn logout">
+           LogOut 
+        </button>
+        <h1 id="usr" class="hide">text</h1>
+        <input id="add" type="text" class="add" placeholder="Add Friends by UID">
+        <br>
+        <button id="addbtn" class="btn">
+          Add
+        </button>
+        <br>
+        <input id="imagefile" class = "btn" style="width:300px" type="file"  accept="image/*"/>
+        <br>
+        <button id="upload" class="btn hide">
+          Upload
+        </button>
+        <br>
+        <div id="container">
+
+          <div id="left">
+
+            <img id="userImage" class="UserImage" src="App/cheese.jpeg">
+            <br>
+            <p5 id="userDescription" class="desc">Your Image</p5>
+          </div>
+          <div id="right">
+            <img id="friendsImage"  class="UserImage" src="App/cheese.jpeg">
+            <br>
+            <p5 class="desc">Friend Images</p5>
+            <br>
+            <button id="backward" class="btn"> Backward</button>
+            <button id="forward" class="btn"> Forward</button>
+          </div>
+        </div>
+</html>

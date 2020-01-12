@@ -34,11 +34,11 @@
     promise.catch(e => console.log(e.message));
   });
 
-
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
-      document.location.href = "../test.html";
+        document.location.href = "../userPage.html";
     }
   });
+
 
 }());
