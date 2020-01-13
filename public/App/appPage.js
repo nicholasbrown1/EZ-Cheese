@@ -23,23 +23,35 @@ const firebaseConfig = {
   const upload = document.getElementById("upload");
   const userDesc = document.getElementById("userDescription");
   const friendPics = document.getElementById("friendsImage");
+  const friendDesc = document.getElementById("friendDesc")
   const forwardbtn = document.getElementById("forward");
   const backwardbtn = document.getElementById("backward");
   const add = document.getElementById("add");
   const addbtn = document.getElementById("addbtn");
+  const status = document.getElementById("status");
+  const statusbtn = document.getElementById("statusbtn");
+
+  statusbtn.addEventListener("click", () => {
+    val = status.value;
+    status.value = "";
+    db.collection("Statuses").doc(UserId).set({
+      status:val
+    })
+  })
 
   addbtn.addEventListener("click", ()=> {
     val = add.value;
     add.value = "";
     if (!(friends.includes(val))){
       friends.push (val);
-      db.collection("Images").doc(UserId).get().then(function (doc) {
+      db.collection("Images").doc(val).get().then(function (doc) {
         if (doc && doc.exists) {
           db.collection("Users").doc(UserId).set({
             friends:friends
           });
         }
       });
+      showFriendPhoto();
     }
   })
 
@@ -99,6 +111,11 @@ const firebaseConfig = {
         userDesc.innerHTML = "Upload An Image";
       }
     });
+    db.collection("Statuses").doc(UserId).get().then(function (doc) {
+      if (doc && doc.exists) {
+        userDesc.innerHTML = doc.data().status;
+      }
+    });
 
     db.collection("Users").doc(UserId).get().then(function(doc) {
       if (doc && doc.exists) {
@@ -107,14 +124,18 @@ const firebaseConfig = {
           showFriendPhoto();
         }
       }
-    })
+    });
 
+    db.collection("Statuses").doc(UserId)
+    .onSnapshot(function(doc) {
+      if(doc && doc.exists) {
+        userDesc.innerHTML = doc.data().status;
+      }
+    })
     db.collection("Images").doc(UserId)
     .onSnapshot(function(doc) {
       if(doc && doc.exists){
         userImg.src = doc.data().base64;
-        userDesc.innerHTML = "Your Image";
-
       }
     });
   }
@@ -138,4 +159,23 @@ const firebaseConfig = {
         friendPics.src = doc.data().base64;
       }
     })
+    db.collection("Statuses").doc(friends[idx]).get().then(function(doc) {
+      if (doc && doc.exists) {
+      friendDesc.innerHTML = doc.data().status
+      } else {
+        friendDesc.innerHTML = "Friend Image"
+      }
+    })
+    db.collection("Statuses").doc(friends[idx])
+    .onSnapshot(function(doc) {
+      if(doc && doc.exists) {
+        friendDesc.innerHTML = doc.data().status;
+      }
+    })
+    db.collection("Images").doc(friends[idx])
+    .onSnapshot(function(doc) {
+      if(doc && doc.exists){
+        friendPics.src = doc.data().base64;
+      }
+    });
   }
