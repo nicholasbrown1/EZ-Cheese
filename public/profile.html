@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile</title>
+
+    <script defer src="/__/firebase/7.6.2/firebase-app.js"></script>
+    <script defer src="/__/firebase/7.6.2/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.6.2/firebase-firestore.js"></script>
+    
+    <script defer src="./App/firebaseUtils.js"></script>
+
+    <script defer src="./App/profile.js" ></script>
+
+    <link rel="stylesheet" href="./CSS/nav.css"> 
+    <link rel="stylesheet" href="./CSS/profile.css">
+    <ul>
+        <li><a href="./friendsPage.html">Home</a></li>
+        <li><a class="active">Profile</a></li>
+        <li><a href="#morecheese">More Cheese Coming Soon!</a></li>
+        <li><a id="logoutBtn">Log Out</a> </li>
+    </ul>
+    <body>
+      <div id="container">
+        <div id="side">
+          <br>
+          <p id = "displayNameLabel" class="hide"> (Username)</p>
+          <p>Change your Status:</p>
+          <input id="statusInput" type="text" class="input" placeholder="Add a status">
+          <br>
+          <button id="statusBtn" class="btn">
+            Update
+          </button>
+          <p>Share your UID with Friends!</p>
+          <p2 id="uidLabel" class="hide">text</p2>
+          <input id="addFriendInput" type="text" class="input" placeholder="Add Friends by UID">
+          <br>
+          <button id="addFriendBtn" class="btn">
+            Add Friend
+          </button>
+        </div>
+        <div id="side">
+          <br>
+          <img id="userImg" src="./App/Images/cheese.jpeg">
+          <br>
+          <p2 id="userImgLabel">Your Image</p2>
+          <br>
+          <br>
+          <p2 id="changeImgLabel" class="hide">Change Your Image</p2>
+          <br>
+          <br>
+          <input id="picInput" type="file" accept="image/*"/>
+          <br>
+          <button id="picUploadBtn" class="btn hide">
+            Upload
+          </button>
+        </div>
+      </div>
+    </body>
+  </head>

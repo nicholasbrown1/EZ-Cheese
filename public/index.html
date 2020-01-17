@@ -4,38 +4,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>EZ Cheese</title>
-
-    <!-- update the version number as needed -->
     <script defer src="/__/firebase/7.6.2/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/7.6.2/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.6.2/firebase-firestore.js"></script>
 
-    <script defer src="./App/init-firebase.js"></script>
+    <script defer src="./App/homePage.js"></script>
 
-    <link rel="stylesheet" href="./CSS/styles.css"> 
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    </script>
+    <link rel="stylesheet" href="./CSS/homePage.css"> 
   </head>
   <body>
-      <div class="HomeLogo">
-        <i class='fas fa-cheese' style='font-size:48px;color:yellow'></i>
-        E.Z. Cheese
-        <i class='fas fa-cheese' style='font-size:48px;color:yellow'></i>
-      </div>
+      <h1>E.Z. Cheese</h1>
     
-    <p> E.Z. Cheese: The Final Frontier for Photo Sharing </p>
+      <h2> E.Z. Cheese: The Final Frontier for Photo Sharing </h2>
       <br>
-      <input id="txtEmail" type="text" class="enter" placeholder="Email">
+      <input id="emailInput" type="text" class="input" placeholder="Email">
       <br>
-      <input id="txtPassword" type="password" class="enter"
-                              placeholder="Password">
+      <input id="passwordInput" type="password" class="input" placeholder="Password">
       <br>
-      <button id="btnLogin" class="btn specialButtons">
-          Log in
-      </button>
+      <button id="loginBtn" class="btn">Log in</button>
       <br>
-      <button id="btnSignUp" class="btn specialButtons">
-          Sign Up
-      </button>
+      <button id="signupBtn" class="btn">Sign Up</button>
   </body>
 </html>

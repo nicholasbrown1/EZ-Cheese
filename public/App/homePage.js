@@ -11,12 +11,16 @@
   };
 
   firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore();
 
-  const btnLogout = document.getElementById('btnLogout');
+  const loginBtn = document.getElementById("loginBtn");
+  const signupBtn = document.getElementById("signupBtn");
+  const emailInput = document.getElementById("emailInput");
+  const passwordInput = document.getElementById("passwordInput");
 
-  btnLogin.addEventListener('click', e => {
-    const email = txtEmail.value;
-    const pass = txtPassword.value;
+  loginBtn.addEventListener('click', e => {
+    const email = emailInput.value;
+    const pass = passwordInput.value;
     const auth = firebase.auth();
 
     const promise = auth.signInWithEmailAndPassword(email, pass);
@@ -24,9 +28,15 @@
     promise.catch(e => console.log(e.message));
   });
 
-  btnSignUp.addEventListener('click', e => {
-    const email = txtEmail.value;
-    const pass = txtPassword.value;
+  passwordInput.addEventListener('keydown', e=> {
+    if(e.keyCode === 13) {
+      loginBtn.click();
+    }
+  })
+
+  signupBtn.addEventListener('click', e => {
+    const email = emailInput.value;
+    const pass = passwordInput.value;
     const auth = firebase.auth();
 
     const promise = auth.createUserWithEmailAndPassword(email, pass);
@@ -36,9 +46,13 @@
 
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
-        document.location.href = "../userPage.html";
+      db.collection("DisplayNames").doc(firebaseUser.uid).get().then(function (doc) {
+      if(doc.exists) {
+        document.location.href = "../profile.html";
+      } else {
+        document.location.href = "../displayName.html";
+      }
+      });
     }
   });
-
-
 }());

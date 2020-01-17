@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+
+    <script defer src="/__/firebase/7.6.2/firebase-app.js"></script>
+    <script defer src="/__/firebase/7.6.2/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.6.2/firebase-firestore.js"></script>
+
+    <script defer src="./App/firebaseUtils.js"></script>
+    <script defer src="./App/friendPage.js" ></script>
+
+    <link rel="stylesheet" href="./CSS/nav.css">
+    <link rel="stylesheet" href="./CSS/friendPage.css"> 
+    </script>
+  </head>
+  <body>
+      <ul>
+        <li><a class="active">Home</a></li>
+        <li><a href="./profile.html">Profile</a></li>
+        <li><a href="#morecheese">More Cheese Coming Soon!</a></li>
+        <li><a id="logoutBtn">Log Out</a></li>
+      </ul>
+      <br>
+      <div id="margin"></div>
+      <div id="container">
+          <div id="element">
+            <button id="backwardBtn" class="btn"> Backward</button>
+          </div>
+          <div id="element">
+              <p5 id="friendDisplayName" class="desc hide">(display Name)</p5>
+              <img id="friendImg"  class="UserImage" src="./App/Images/cheese.jpeg">
+          <br>
+          <p5 id="friendImgLabel" class="desc">Friend Images</p5>
+          <br>
+          </div>
+        <div id="element">
+          <button id="forwardBtn" class="btn"> Forward</button>
+        </div>
+      </div>
+ </body>
+</html>
