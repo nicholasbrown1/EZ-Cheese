@@ -113,7 +113,13 @@
       statusInput.value = "";
       userImgLabel.innerHTML = val;
       setDatabase(db, "Statuses", UserId, {status:val});
-    });
+  });
+
+  statusInput.addEventListener("keydown", e=>{
+    if(e.keyCode === 13) {
+      statusBtn.click();
+    }
+  });
 
   addFriendBtn.addEventListener("click", ()=> {
     val = addFriendInput.value
@@ -123,6 +129,12 @@
             friends.push(val);
             setDatabase(db, friendCol, UserId, {friends:friends});
       });
+    }
+  });
+
+  addFriendInput.addEventListener("keydown", e=>{
+    if(e.keyCode === 13) {
+      addFriendBtn.click();
     }
   });
 
