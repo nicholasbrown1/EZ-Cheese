@@ -72,11 +72,6 @@
       friends = doc.data()[friendField];
     });
 
-    addChecker(db, imageCol, UserId, function (doc) {
-      img = doc.data()[imageField];
-      loadImg(img);
-    });
-
     addChecker(db, statusCol, UserId, function (doc) {
       userImgLabel.innerHTML = doc.data()[statusField];
     })
@@ -138,6 +133,7 @@
     var pic = reader.result;
     picInput.value = null;
     picUploadBtn.classList.add("hide");
+    userImg.src = pic;
     for(var i = 0; i < alternateStorageFields.length-1;i++){
       db.collection(alternateStorageCol).doc(UserId+alternateStorageFields[i]).delete();
     }
