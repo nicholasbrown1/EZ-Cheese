@@ -71,10 +71,6 @@
     checkDatabase(db, friendCol, UserId, function (doc) {
       friends = doc.data()[friendField];
     });
-
-    addChecker(db, statusCol, UserId, function (doc) {
-      userImgLabel.innerHTML = doc.data()[statusField];
-    })
   }
 
   function readImage(blob) {
@@ -115,6 +111,7 @@
   statusBtn.addEventListener("click", () => {
       val = statusInput.value;
       statusInput.value = "";
+      userImgLabel.innerHTML = val;
       setDatabase(db, "Statuses", UserId, {status:val});
     });
 
